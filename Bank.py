@@ -1,21 +1,25 @@
 class user:
-	__accounts = 0
-	__totalMoney = 0
-	__privatekey = 7411
-	def __init__(self, username, password, amount=0):
+	accounts = 0
+	
+	@classmethod
+	def __init__(self, username, password):
 		self.username = username
 		self.password = password
-		self.balance = amount
-		user.__accounts += 1
-		user.__totalMoney += amount
+		user.accounts += 1
+	
+
 	def encrypt(self):
-		letters = "abcdefghijklmnopqrstuvwxyz!@#$%&*?~123456789"
+		privatekey = 7411
+		letters = "abcdefghijklmnopqrstuvwxyz"
 		encrypted = ""
 		for letter in self.username:
-			newindex = (letters.find(letter) + __privatekey) % 34
-			encrypted += letters[newindex]
-		self.username = encrypted
-    	
-    	
-
+			if letter in letters:
+				newindex = (letters.find(letter) + privatekey) % 26
+				encrypted += letters[newindex]
+			elif letter.lower() in letters:
+				newindex = (letters.find(letter.lower()) + privatekey) % 34
+				encrypted += letters[newindex].upper()
+			
+			self.username = encrypted
+	
 
