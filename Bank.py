@@ -21,5 +21,25 @@ class user:
 				encrypted += letters[newindex].upper()
 			
 			self.username = encrypted
+			
+class Bank(user):
+	def __init__(self, balance):
+		self.balance= balance
+		
+	def withdraw(self, amount):
+		if amount> self.balance:
+			print("You do not have enough!")
+		else:
+			self.balance-= amount
+			return self.balance
 	
+	def deposit(self, amount):
+		self.balance+= deposit
+		return self.balance
+	
+	def current_balance(self):
+		return self.balance
+	
+	def add_account(self):
+        
 
